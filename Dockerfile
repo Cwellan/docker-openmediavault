@@ -11,6 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
 
 # Install OpenMediaVault packages and dependencies
+RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7E7A6C592EF35D13
 RUN apt-key adv --fetch-keys http://packages.openmediavault.org/public/archive.key
 RUN apt-get update -y; apt-get install openmediavault-keyring postfix locales -y --force-yes
 RUN apt-get update -y; apt-get install openmediavault -y
